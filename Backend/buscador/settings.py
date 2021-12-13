@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-
+import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +26,6 @@ SECRET_KEY = 'django-insecure-cn=aq45+06xm)#+6!(fa@e3im943%!ew27#0-luk)7a-y!!k5&
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -82,7 +81,14 @@ WSGI_APPLICATION = 'buscador.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-
+	'default': {
+		'ENGINE': 'django.db.backends.postgresql_psycopg2',
+		'NAME': 'd4dvdu3p276rmk',
+		'USER': 'mhtwujfofhdkxp',
+		'PASSWORD': '9d30488343bdfd18f0d4ec82d6f1d56812765adaa9c1c2d9096251329e1ead73',
+		'HOST': 'ec2-52-86-177-34.compute-1.amazonaws.com',
+		'PORT': '5432', 
+	}
 }
 
 
@@ -128,3 +134,5 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+django_heroku.settings(locals())

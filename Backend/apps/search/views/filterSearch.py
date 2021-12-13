@@ -25,7 +25,6 @@ class LastSearch(generics.RetrieveAPIView):
 
   def get(self, request, *args, **kwargs):
     queryset = Search.objects.order_by("lastSearch").last()
-    print(queryset)
     serializer = SerializerSearch(queryset, many=False)
     return Response(serializer.data, status=status.HTTP_200_OK)
 

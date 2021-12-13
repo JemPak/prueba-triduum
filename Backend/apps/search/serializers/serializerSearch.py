@@ -21,5 +21,5 @@ class SerializerSearch(serializers.ModelSerializer):
       "word":       search.word,
       "searchs":    search.searchs,
       "content":    len(search.result),
-      "lastSerach": search.lastSearch 
+      "lastSearch": search.lastSearch 
     }
