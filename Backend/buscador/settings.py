@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.postgres'
     'rest_framework',
     'apps.search',
 ]
@@ -83,14 +82,7 @@ WSGI_APPLICATION = 'buscador.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-	'default': {
-		'ENGINE ': 'django.db.backends.postgresql_psycopg2',
-		'NAME': 'd4dvdu3p276rmk',
-		'USER': 'mhtwujfofhdkxp',
-		'PASSWORD': '9d30488343bdfd18f0d4ec82d6f1d56812765adaa9c1c2d9096251329e1ead73',
-		'HOST': 'ec2-52-86-177-34.compute-1.amazonaws.com',
-		'PORT': '5432', 
-	}
+
 }
 
 

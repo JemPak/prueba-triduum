@@ -20,6 +20,6 @@ class SerializerSearch(serializers.ModelSerializer):
     return {
       "word":       search.word,
       "searchs":    search.searchs,
-      "content":    search.result.length,
+      "content":    len(search.result),
       "lastSerach": search.lastSearch 
     }

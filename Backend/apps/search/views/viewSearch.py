@@ -3,7 +3,6 @@ from rest_framework           import generics, status
 from rest_framework.response  import Response
 
 #import shortcuts 
-from django.shortcuts import get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
 
 # import datetime for update 
@@ -25,29 +24,12 @@ class CreateSearch(generics.CreateAPIView):
     try:
       # get word sent by user, conver to lowercase and strip blank spaces
       word = request.data['word'].strip().lower()
-      search = Search.objects.get(name=word)
+      search = Search.objects.get(word=word)
       search.searchs += 1 #update search increasing 1
       search.lastSearch = datetime.now()
       search.save()
       return Response("Busqueda encontrada y actualizada", status=status.HTTP_200_OK)
     except ObjectDoesNotExist:
       # if Not Exists, create new Search with this params
-      print(request.data)
       return self.create(request, *args, **kwargs)
 
-class FirstSearch(generics.RetrieveAPIView):
-  serializer_class  = SerializerSearch
-  queryset          = Search.objects.all()
-
-  def get(self, request, *args, **kwargs):
-    query = Search.objects.filter(lastChange__time__range= (datetime.min, datetime.max))[0]
-    return query
-
-
-class LastSearch(generics.RetrieveAPIView):
-  serializer_class  = SerializerSearch
-  queryset          = Search.objects.all()
-
-  def get(self, request, *args, **kwargs):
-    query = Search.objects.filter(lastChange__time__range= (datetime.min, datetime.max))[-1]
-    return query

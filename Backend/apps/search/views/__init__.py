@@ -1,1 +1,2 @@
-from .viewSearch import CreateSearch, FirstSearch, LastSearch
+from .viewSearch import CreateSearch
+from .filterSearch import FirstSearch, LastSearch, MostSearch, TotalSearch
